@@ -1,0 +1,16 @@
+.navbar {
+  /* background-color: var(--color-primary); */
+  background-color: #34C94B;
+  height: 74px;
+  width: 100vw;
+  padding: 0px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .btnfeed, .navbar .btnfeed:hover{
+  background-color: #121212;
+  color:#34C94B;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
