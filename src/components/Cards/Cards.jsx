@@ -13,7 +13,7 @@ const Cards = ({ albumData, title }) => {
             fontFamily: "Poppins",
             color: "#ffffff",
             marginBottom: "20px",
-            marginTop:"0px"
+            marginTop:"50px"
           }}
         >
           {title}
