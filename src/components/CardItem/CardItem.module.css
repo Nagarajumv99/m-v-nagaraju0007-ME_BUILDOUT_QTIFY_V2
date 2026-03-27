@@ -1,0 +1,14 @@
+.chip{
+  background-color: #121212 !important; 
+  color: white !important;
+  font-family:"Poppins" !important;
+  font-size:10px !important; 
+  padding:4px 8px !important;
+}
+.bottomTxt{
+  font-size: 14px !important;
+  font-family: "Poppins" !important;
+  color: #ffffff;
+  position: absolute;
+  bottom: -30px;
+}
