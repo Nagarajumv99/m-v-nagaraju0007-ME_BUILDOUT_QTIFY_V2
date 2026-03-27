@@ -31,7 +31,7 @@ const Cards = ({ albumData, title }) => {
         </Button>
       </Grid>
 
-      {!showCarousel ? (
+      {showCarousel ? (
         <Carousel
           data={albumData}
           renderItem={(album) => <CardItem eachItem={album} />}
