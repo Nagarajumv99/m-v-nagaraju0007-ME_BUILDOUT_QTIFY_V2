@@ -7,13 +7,13 @@ const Cards= ({albumData}) => {
     <Grid container justifyContent="space-between"><Typography sx={{textAlign:"left", paddingLeft:"30px", fontFamily:"Poppins", color:"#ffffff", marginBottom:"20px"}}>Top Albums</Typography> <Button sx={{textAlign:"right", paddingRight:"30px", fontFamily:"Poppins", color:"#34C94B", marginBottom:"20px"}}>Collapse</Button></Grid>
     
     <Grid container spacing={7} justifyContent="flex-start" padding="0px 30px">
-      {albumData.map((eachItem, index) => (
+      {albumData.map((album, index) => (
         <Grid
           item
           key={index}
           sx={{ flexBasis: "calc(100% / 7)", maxWidth: "calc(100% / 7)" }}
         >
-          <CardItem eachItem={eachItem} />
+          <CardItem key={album.id} eachItem={album} />
         </Grid>
       ))}
     </Grid>
