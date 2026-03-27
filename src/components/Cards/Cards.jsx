@@ -27,11 +27,11 @@ const Cards = ({ albumData, title }) => {
             color: "#34C94B",
             marginTop: "30px",
           }}>
-          {showCarousel ? "Show All" : "Collapse"}
+          {showCarousel ? "Collapse" : "Show All"}
         </Button>
       </Grid>
 
-      {showCarousel ? (
+      {!showCarousel ? (
         <Carousel
           data={albumData}
           renderItem={(album) => <CardItem eachItem={album} />}
