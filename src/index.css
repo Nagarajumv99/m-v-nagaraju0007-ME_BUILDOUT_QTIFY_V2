@@ -44,3 +44,7 @@ body{
 .css-1aquho2-MuiTabs-indicator{
   background-color: #34C94B !important;
 }
+hr {
+    margin-top: 30px;
+    border: 1px solid #34C94B;
+}

@@ -16,7 +16,7 @@ const Cards = ({ albumData, title }) => {
             paddingLeft: "30px",
             fontFamily: "Poppins",
             color: "#ffffff",
-            marginTop: "30px",
+            marginTop: "30px"
           }}>
           {title}
         </Typography>
@@ -37,7 +37,7 @@ const Cards = ({ albumData, title }) => {
           renderItem={(album) => <CardItem eachItem={album} />}
         />
       ) : (
-        <Grid container spacing={3} sx={{ pl: 3, mb: 6 }}>
+        <Grid container spacing={3} sx={{ pl: 3, mb: 6, pr:3 }}>
           {albumData.map((album) => (
             <Grid
               item

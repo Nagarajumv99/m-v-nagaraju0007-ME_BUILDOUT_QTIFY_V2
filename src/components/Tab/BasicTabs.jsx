@@ -2,7 +2,9 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import styles from "./BasicTabs.module.css";
 
-import { Box, Tab, Tabs } from "@mui/material";
+import { Box, Grid, Tab, Tabs, Typography } from "@mui/material";
+import Carousel from "../Carousel/Carousel";
+import CardItem from "../CardItem/CardItem";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -33,31 +35,69 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({ allSongs, genres }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  // Filter songs by genre key
+  const getFilteredSongs = (genreKey) => {
+    if (!genreKey || genreKey === "all") return allSongs;
+    return allSongs.filter(song => song.genre.key === genreKey);
+  };
+
+  // Tabs: All Songs + first 4 genres
+  const tabList = [{ key: "all", label: "All Songs" }, ...genres.slice(0, 4)];
+
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className={styles.btn}>
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
+    <>
+    <hr/>
+    <Grid container direction="column">
+      <Typography sx={{
+        textAlign: "left",
+        paddingLeft: "30px",
+        fontFamily: "Poppins",
+        color: "#ffffff",
+        marginTop: "30px",
+      }}>
+        Songs
+      </Typography>
+
+      <Box sx={{
+        width: '100%',
+        textAlign: "left",
+        paddingLeft: "30px",
+        fontFamily: "Poppins",
+        color: "#ffffff",
+        marginTop: "30px",
+      }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="songs tabs"
+            className={styles.btn}
+          >
+            {tabList.map((tab, index) => (
+              <Tab key={tab.key} label={tab.label} {...a11yProps(index)} />
+            ))}
+          </Tabs>
+        </Box>
+
+        {tabList.map((tab, index) => (
+          <CustomTabPanel key={tab.key} value={value} index={index}>
+            <Carousel
+              data={getFilteredSongs(tab.key)}
+              renderItem={(song) => (
+                <CardItem eachItem={song} type="songs" />
+              )}
+            />
+          </CustomTabPanel>
+        ))}
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        Item One
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel>
-    </Box>
+    </Grid>
+    </>
   );
-}
+};

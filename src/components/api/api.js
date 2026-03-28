@@ -19,3 +19,23 @@ export const fetchNewAlbums = async () => {
     console.error(err);
   }
 };
+
+export const SONGS_BACK_ENDPOINT = "https://qtify-backend.labs.crio.do";
+
+export const fetchSongs = async () => {
+  try {
+    const res = await axios.get(`${SONGS_BACK_ENDPOINT}/songs`);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const fetchGenres = async () => {
+  try {
+    const res = await axios.get(`${SONGS_BACK_ENDPOINT}/genres`);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
